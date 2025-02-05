@@ -1,0 +1,41 @@
+---
+
+- scm:
+    name: ui-autotests-repo
+    scm:
+      - git:
+          url: https://github.com/Aspeeda/homework01.git
+          credentials-id: jenkins
+          branches:
+            - FETCH_HEAD
+          refspec: $REFSPEC
+
+- scm:
+    name: api-autotests-repo
+    scm:
+      - git:
+          url: https://github.com/Aspeeda/Homework_3.git
+          credentials-id: jenkins
+          branches:
+            - FETCH_HEAD
+          refspec: $REFSPEC
+
+- scm:
+    name: mobile-autotests-repo
+    scm:
+      - git:
+          url: git@test.mail.ru/mobile.git
+          credentials-id: jenkins
+          branches:
+            - FETCH_HEAD
+          refspec: $REFSPEC
+
+- scm:
+    name: runner-autotests-repo
+    scm:
+      - git:
+          url: https://github.com/Aspeeda/jenkinsSettings.git
+          credentials-id: jenkins
+          branches:
+            - FETCH_HEAD
+          refspec: $REFSPEC

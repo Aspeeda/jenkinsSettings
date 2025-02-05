@@ -1,0 +1,23 @@
+- job-template:
+    name: 'ui-autotests'
+    description: '{description}'
+    project-type: pipeline
+    parameters:
+      - string:
+          name: REFSPEC
+          default: main
+          description: "<h3>UI Tests Configuration</h3>"
+      - text:
+          name: YAML_CONFIG
+          default: ""
+          description: "<h3>Yaml job configuration</h3>"
+      - choice:
+          name: BROWSER
+          choices:
+            - chrome
+            - firefox
+          description: "select browser"
+    pipeline-scm:
+      scm:
+        - ui-autotests-repo
+      script-path: ./ui_autotests.groovy

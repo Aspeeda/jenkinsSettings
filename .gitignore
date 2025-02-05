@@ -1,0 +1,5 @@
+jenkins_home/      
+*.log               
+.env              
+job_cache/         
+*.pid      
