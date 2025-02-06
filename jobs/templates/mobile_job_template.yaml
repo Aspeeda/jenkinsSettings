@@ -2,6 +2,8 @@
     name: 'mobile-autotests'
     description: '{description}'
     project-type: pipeline
+     triggers:
+      timed: 'H 3 * * *'
     parameters:
       - string:
           name: REFSPEC

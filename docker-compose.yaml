@@ -9,7 +9,7 @@ services:
     volumes:
       - ./registry:/var/lib/registry
     environment:
-      - REGISTRY_HTTP_ADDR=0.0.0.0:5005
+      - REGISTRY_HTTP_ADDR-0.0.0.0:5005
 
   jenkins:
     image: jenkins/jenkins:jdk17

@@ -2,6 +2,8 @@
     name: 'ui-autotests'
     description: '{description}'
     project-type: pipeline
+     triggers:
+      timed: 'H 3 * * *'
     parameters:
       - string:
           name: REFSPEC
@@ -20,4 +22,4 @@
     pipeline-scm:
       scm:
         - ui-autotests-repo
-      script-path: ./ui_pipleline.groovy
+      script-path: .groovy
