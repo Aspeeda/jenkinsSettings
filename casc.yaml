@@ -18,10 +18,10 @@ jenkins:
   #       - credentials:
   #           - usernamePassword:
   #               id: "git-credentials"
-  #               username: "your-git-user"
-  #               password: "your-git-token"
+  #               username: "mdi"
+  #               password: "mdi"
   #           - string:
-  #               id: "telegram-bot-token"
+  #               id: "-1002357364323"
   #               secret: "your-telegram-bot-token"
 
   jobs:

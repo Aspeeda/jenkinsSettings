@@ -1,0 +1,53 @@
+# Игнорировать всё содержимое директории .git (система контроля версий)
+.git/
+
+# Игнорировать node_modules (если это Node.js проект)
+node_modules/
+
+# Игнорировать логи
+*.log
+
+# Игнорировать временные файлы
+*.tmp
+*.temp
+
+# Игнорировать скрытые файлы и директории, кроме .dockerignore и Dockerfile
+.*
+!/.dockerignore
+!/Dockerfile
+
+# Игнорировать директории с секретами (если есть)
+secrets/
+jenkins_home/secrets/
+
+# Игнорировать IDE-специфичные файлы
+.vscode/
+.idea/
+
+# Игнорировать архивные файлы
+*.zip
+*.tar
+*.gz
+
+# Игнорировать файлы зависимостей (если это Python проект)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.venv
+venv/
+env/
+
+# Игнорировать Jenkins-специфичные файлы, кроме JCasC
+jenkins_home/plugins/
+jenkins_home/war/
+jenkins_home/logs/
+jenkins_home/jobs/
+jenkins_home/users/
+jenkins_home/workspace/
+
+# Не игнорировать JCasC-конфигурации
+!jenkins_home/casc_configs/
+!jenkins_home/jenkins.yaml
+!jenkins_home/*.yaml
+!jenkins_home/*.yml
