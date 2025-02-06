@@ -18,21 +18,20 @@ services:
     restart: always
     ports:
       - 8080:8080
-      - 50000:50000  # Порт для JNLP агентов
     volumes:
       - ./jenkins_home:/var/jenkins_home
-      - ./casc.yaml:/var/jenkins_home/casc.yaml  # Подключение JCasC
-      - ./job.ini:/var/jenkins_home/job.ini  # Конфиг для Job Builder
-      - ./jobs:/var/jenkins_jobs  # Подключение всех Job Templates
-      - ./runner_job.groovy:/var/jenkins_home/runner_job.groovy  # Pipeline Runner
-      - ./update_job.groovy:/var/jenkins_home/update_job.groovy  # Pipeline Update
+      - ./casc.yaml:/var/jenkins_home/casc.yaml 
+      - ./job.ini:/var/jenkins_home/job.ini 
+      - ./jobs:/var/jenkins_jobs  
+      - ./runner_job.groovy:/var/jenkins_home/runner_job.groovy  
+      - ./update_job.groovy:/var/jenkins_home/update_job.groovy  
       - /var/run/docker.sock:/var/run/docker.sock
     user: root
     environment:
       - JAVA_OPTS="-Dhudson.model.DownloadService.noSignatureCheck=true"
       - DOCKER_OPTS="-H tcp://0.0.0.0:2376 -H unix:///var/run/docker.sock"
       - DOCKER_HOST=unix:///var/run/docker.sock
-      - CASC_JENKINS_CONFIG=/var/jenkins_home/casc.yaml  # Указываем путь к JCasC
+      - CASC_JENKINS_CONFIG=/var/jenkins_home/casc.yaml
     depends_on:
       - registry
 
