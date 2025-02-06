@@ -2,7 +2,7 @@
     name: 'mobile-autotests'
     description: '{description}'
     project-type: pipeline
-     triggers:
+    triggers:
       timed: 'H 3 * * *'
     parameters:
       - string:

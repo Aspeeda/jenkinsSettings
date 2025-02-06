@@ -2,8 +2,8 @@
     name: 'ui-autotests'
     description: '{description}'
     project-type: pipeline
-     triggers:
-      timed: 'H 3 * * *'
+    triggers:
+      timed: 'H 3 1 * *'
     parameters:
       - string:
           name: REFSPEC
@@ -12,7 +12,7 @@
       - text:
           name: YAML_CONFIG
           default: ""
-          description: "<h3>Yaml job configuration</h3>"
+          description: "<h3>Yaml bob configuration</h3>"
       - choice:
           name: BROWSER
           choices:
@@ -22,4 +22,4 @@
     pipeline-scm:
       scm:
         - ui-autotests-repo
-      script-path: .groovy
+      script-path: Jenkinsfile

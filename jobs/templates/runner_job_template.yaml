@@ -2,8 +2,8 @@
     name: 'runner-autotests'
     description: '{description}'
     project-type: pipeline
-     triggers:
-      timed: 'H 3 * * *'
+    triggers:
+      timed: 'H 3 1 * *'
     parameters:
       - string:
           name: REFSPEC

@@ -9,7 +9,7 @@ services:
     volumes:
       - ./registry:/var/lib/registry
     environment:
-      - REGISTRY_HTTP_ADDR-0.0.0.0:5005
+      - REGISTRY_HTTP_ADDR=0.0.0.0:5005
 
   jenkins:
     image: jenkins/jenkins:jdk17
@@ -20,8 +20,8 @@ services:
       - 8080:8080
     volumes:
       - ./jenkins_home:/var/jenkins_home
-      - ./job.ini:/var/jenkins_home/job.ini 
-      - ./jobs:/var/jenkins_jobs  
+      # - ./job.ini:/var/jenkins_home/job.ini 
+      # - ./jobs:/var/jenkins_jobs  
       # - ./runner_job.groovy:/var/jenkins_home/runner_job.groovy  
       # - ./update_job.groovy:/var/jenkins_home/update_job.groovy  
       - /var/run/docker.sock:/var/run/docker.sock
@@ -30,8 +30,6 @@ services:
       - JAVA_OPTS="-Dhudson.model.DownloadService.noSignatureCheck=true"
       - DOCKER_OPTS="-H tcp://0.0.0.0:2376 -H unix:///var/run/docker.sock"
       - DOCKER_HOST=unix:///var/run/docker.sock
-    depends_on:
-      - registry
 
   nginx:
     image: nginx:stable-perl
