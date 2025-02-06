@@ -1,5 +1,5 @@
 timeout(5, timeUnit='MINUTES') {
-    node('master') {
+    node('maven') {
 
         def config = readYaml text: $YAML_CONFIG
         def jenkinsUrl = config['JENKINS_URL']

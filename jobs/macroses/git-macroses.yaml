@@ -20,15 +20,15 @@
             - FETCH_HEAD
           refspec: $REFSPEC
 
-- scm:
-    name: mobile-autotests-repo
-    scm:
-      - git:
-          url: git@test.mail.ru/mobile.git
-          credentials-id: jenkins
-          branches:
-            - FETCH_HEAD
-          refspec: $REFSPEC
+# - scm:
+#     name: mobile-autotests-repo
+#     scm:
+#       - git:
+#           url: git@test.mail.ru/mobile.git
+#           credentials-id: jenkins
+#           branches:
+#             - FETCH_HEAD
+#           refspec: $REFSPEC
 
 - scm:
     name: runner-autotests-repo
