@@ -2,6 +2,8 @@
     name: 'api-autotests'
     description: '{description}'
     project-type: pipeline
+    triggers:
+      timed: 'H 3 * * *'
     parameters:
       - string:
           name: REFSPEC
@@ -14,4 +16,4 @@
     pipeline-scm:
       scm:
         - api-autotests-repo
-      script-path: ./jenkins/api_pipeline.groovy
+      script-path: ./api_pipeline.groovy

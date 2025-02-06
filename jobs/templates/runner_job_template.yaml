@@ -14,4 +14,4 @@
     pipeline-scm:
       scm:
         - runner-autotests-repo
-      script-path: ./jenkins/runner_pipeline.groovy
+      script-path: ./runner_job.groovy

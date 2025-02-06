@@ -20,4 +20,4 @@
     pipeline-scm:
       scm:
         - ui-autotests-repo
-      script-path: ./ui_autotests.groovy
+      script-path: ./ui_pipleline.groovy

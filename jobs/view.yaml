@@ -12,6 +12,7 @@
        - api-autotests
        - mobile-autotests
        - runner-autotests
+       - deploy-jobs
     columns:
       - status
       - build-button
