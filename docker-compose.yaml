@@ -1,7 +1,7 @@
 services:
   registry:
     image: registry:2.8.3
-    container_name: regisrty
+    container_name: registry
     hostname: registry
     restart: always
     ports:
@@ -9,24 +9,46 @@ services:
     volumes:
       - ./registry:/var/lib/registry
     environment:
-      - REGISTRY_HTTP_ADDR-0.0.0.0:5005
-
+      - REGISTRY_HTTP_ADDR=0.0.0.0:5005
 
   jenkins:
-      image: jenkins/jenkins:jdk17
-      container_name: jenkins
-      hostname: jenkins
-      restart: always
-      ports:
-        - 8080:8080
-      volumes:
-        - ./jenkins_home:/var/jenkins_home
-        - /var/run/docker.sock:/var/run/docker.sock
-      user: root
-      environment:
-        - JAVA_OPTS="-Dhudson.model.DownloadService.noSignatureCheck=true"
-        - DOCKER_OPTS="-H tcp://0.0.0.0:2376 -H unix:///var/run/docker.sock"
-        - DOCKER_HOST=unix:///var/run/docker.sock
+    image: jenkins/jenkins:jdk17
+    container_name: jenkins
+    hostname: jenkins
+    restart: always
+    ports:
+      - 8080:8080
+      - 50000:50000  # Порт для JNLP агентов
+    volumes:
+      - ./jenkins_home:/var/jenkins_home
+      - ./casc.yaml:/var/jenkins_home/casc.yaml  # Подключение JCasC
+      - ./job.ini:/var/jenkins_home/job.ini  # Конфиг для Job Builder
+      - ./jobs:/var/jenkins_jobs  # Подключение всех Job Templates
+      - ./runner_job.groovy:/var/jenkins_home/runner_job.groovy  # Pipeline Runner
+      - ./update_job.groovy:/var/jenkins_home/update_job.groovy  # Pipeline Update
+      - /var/run/docker.sock:/var/run/docker.sock
+    user: root
+    environment:
+      - JAVA_OPTS="-Dhudson.model.DownloadService.noSignatureCheck=true"
+      - DOCKER_OPTS="-H tcp://0.0.0.0:2376 -H unix:///var/run/docker.sock"
+      - DOCKER_HOST=unix:///var/run/docker.sock
+      - CASC_JENKINS_CONFIG=/var/jenkins_home/casc.yaml  # Указываем путь к JCasC
+    depends_on:
+      - registry
+
+  slave:
+    build:
+      context: ./slave
+      dockerfile: Dockerfile
+    container_name: jenkins-slave
+    hostname: jenkins-slave
+    restart: always
+    environment:
+      - JENKINS_URL=http://jenkins:8080
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+      - jenkins
 
   nginx:
     image: nginx:stable-perl
