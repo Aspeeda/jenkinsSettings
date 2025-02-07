@@ -16,4 +16,4 @@
     pipeline-scm:
       scm:
         - mobile-autotests-repo
-      script-path: ./jenkins/mobile_pipeline.groovy
+      script-path: ./mobile_pipeline.groovy

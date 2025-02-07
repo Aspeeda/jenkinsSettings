@@ -23,3 +23,9 @@
     description: "<h2>Autotests runner</h2>"
     jobs:
       - runner-autotests
+
+- project:
+    name: deploy
+    description: "<h2>Autotests runner</h2>"
+    jobs:
+      - deploy

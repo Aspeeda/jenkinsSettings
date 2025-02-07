@@ -1,0 +1,15 @@
+- job-template:
+    name: 'deploy'
+    description: '{description}'
+    project-type: pipeline
+    triggers:
+      timed: 'H 1 * * *'
+    parameters:
+      - string:
+          name: REFSPEC
+          default: main
+          description: "<h3>deploy</h3>"
+    pipeline-scm:
+      scm:
+        - jenkinsSettings
+      script-path: ./deploy_pipeline.groovy

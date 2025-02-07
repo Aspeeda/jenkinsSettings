@@ -39,3 +39,13 @@
           branches:
             - FETCH_HEAD
           refspec: $REFSPEC
+
+- scm:
+    name: jenkinsSettings
+    scm:
+      - git:
+          url: https://github.com/Aspeeda/jenkinsSettings.git
+          credentials-id: jenkins
+          branches:
+            - FETCH_HEAD
+          refspec: $REFSPEC
