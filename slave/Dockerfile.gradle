@@ -5,5 +5,5 @@ USER root
 RUN mkdir /root/jenkins_agent
 WORKDIR /root/jenkins_agent
 
-RUN apt update -y \
-  && apt install maven -y
+RUN apt-get update -y && \
+    apt-get install -y gradle
